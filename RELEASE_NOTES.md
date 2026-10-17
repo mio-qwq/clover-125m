@@ -34,6 +34,6 @@ Raw/processed training data, data collection and cleaning tools, and private tra
 
 ## License
 
-Original Clover-125M project code and model weights: **Apache License 2.0**. Third-party components and source materials retain their own terms; see [LICENSE](LICENSE), [NOTICE](NOTICE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Original Clover-125M project code and model weights: **Apache License 2.0**. Third-party components and source materials retain their own terms; see [LICENSE](https://github.com/mio-qwq/clover-125m/blob/v0.1.0/LICENSE), [NOTICE](https://github.com/mio-qwq/clover-125m/blob/v0.1.0/NOTICE) and [THIRD_PARTY_NOTICES.md](https://github.com/mio-qwq/clover-125m/blob/v0.1.0/THIRD_PARTY_NOTICES.md).
 
 Clover is a small experimental language model. It may repeat, misunderstand requests, or confidently produce incorrect information.
