@@ -1,0 +1,112 @@
+name: Clover-125M v0.1.0 Release
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/publish-clover-v0.1.0.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: clover-release-v0.1.0
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Validate release records and refresh SHA256SUMS
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          release = json.loads(Path("release.json").read_text())
+          conversion = json.loads(Path("provenance/conversion.json").read_text())
+          checks = json.loads(Path("provenance/publication_checks.json").read_text())
+          assert release["published"] is True
+          assert release["code_license"] == release["model_license"] == "apache-2.0"
+          assert release["github_repo_url"] == "https://github.com/mio-qwq/clover-125m"
+          assert release["source_model_sha256"] == conversion["source_sha256"] == checks["model_hashes_unchanged"]["safetensors"]
+          assert release["gguf_sha256"] == conversion["gguf_sha256"] == checks["model_hashes_unchanged"]["gguf"]
+          assert release["tokenizer_sha256"] == conversion["tokenizer_sha256"]
+          notes = Path("RELEASE_NOTES.md").read_text()
+          for key in ("source_model_sha256","gguf_sha256","tokenizer_sha256","formatter_sha256"):
+              digest = release[key]
+              assert len(digest) == 64 and all(c in "0123456789abcdef" for c in digest)
+              assert digest in notes
+          names = sorted(x.decode("utf-8") for x in subprocess.check_output(["git","ls-files","-z"]).split(b"\0") if x and x != b"SHA256SUMS")
+          sums = []
+          for name in names:
+              assert Path(name).is_file()
+              sums.append(f"{hashlib.sha256(Path(name).read_bytes()).hexdigest()}  {name}")
+          Path("SHA256SUMS").write_text("\n".join(sums) + "\n")
+          print(f"Verified source manifest with {len(names)} files")
+          PY
+
+      - name: Create GitHub-verified commit
+        id: signed
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, json, os, urllib.request, urllib.error
+          from pathlib import Path
+          query = "mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input:$input) { commit { oid url } } }"
+          data = {
+            "query": query,
+            "variables": {"input": {
+              "branch": {"repositoryNameWithOwner": os.environ["GITHUB_REPOSITORY"], "branchName": "main"},
+              "expectedHeadOid": os.environ["GITHUB_SHA"],
+              "message": {"headline": "release: verified Clover-125M v0.1.0 checksums"},
+              "fileChanges": {"additions": [{
+                "path":"SHA256SUMS",
+                "contents":base64.b64encode(Path("SHA256SUMS").read_bytes()).decode()
+              }]}
+            }}
+          }
+          req = urllib.request.Request(
+            "https://api.github.com/graphql",
+            data=json.dumps(data).encode(),
+            headers={"Authorization":"Bearer "+os.environ["GITHUB_TOKEN"],"Content-Type":"application/json","Accept":"application/vnd.github+json"},
+            method="POST"
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=45) as response:
+                  result = json.load(response)
+          except urllib.error.HTTPError as e:
+              raise RuntimeError(e.read().decode(errors="replace")) from e
+          if result.get("errors"): raise RuntimeError(json.dumps(result["errors"]))
+          commit = result["data"]["createCommitOnBranch"]["commit"]
+          print("Commit:",commit["url"])
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f: f.write("sha="+commit["oid"]+"\n")
+          PY
+
+      - name: Verify signature and publish Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SIGNED_SHA: ${{ steps.signed.outputs.sha }}
+        run: |
+          set -euo pipefail
+          verified=""
+          for i in $(seq 1 10); do
+            verified="$(gh api "/repos/$GITHUB_REPOSITORY/git/commits/$SIGNED_SHA" --jq '.verification.verified' || true)"
+            [ "$verified" = "true" ] && break
+            sleep 2
+          done
+          if [ "$verified" != "true" ]; then
+            echo "Commit not verified; no Release will be published"
+            exit 1
+          fi
+          if ! gh release view v0.1.0 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create v0.1.0 --repo "$GITHUB_REPOSITORY" \
+              --target "$SIGNED_SHA" \
+              --title "Clover-125M v0.1.0" \
+              --notes-file RELEASE_NOTES.md
+          fi
+          gh release view v0.1.0 --repo "$GITHUB_REPOSITORY" --json url,tagName,targetCommitish
