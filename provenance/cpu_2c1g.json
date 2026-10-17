@@ -1,0 +1,58 @@
+{
+  "scope": "Previously captured production snapshots; no new server probe",
+  "host": {
+    "vcpus": 2,
+    "visible_ram_mib": 887,
+    "existing_swap_mib": 1023,
+    "gpu": false,
+    "os": "Ubuntu 24.04 x86-64"
+  },
+  "gguf_bytes": 500008288,
+  "parameter_bytes": 498883584,
+  "initial_process_memory": {
+    "VmRSS": "564668 kB",
+    "VmHWM": "567868 kB",
+    "VmSwap": "80232 kB",
+    "Threads": "1",
+    "Rss": "564668 kB",
+    "Pss": "556316 kB",
+    "Private_Clean": "499988 kB",
+    "Private_Dirty": "54072 kB",
+    "Swap": "80232 kB"
+  },
+  "later_process_memory_kib": {
+    "VmHWM": 598616,
+    "VmRSS": 520604,
+    "VmSwap": 120408
+  },
+  "later_cgroup_memory_peak_bytes": 620363776,
+  "short_request_observations": [
+    {
+      "case": "identity",
+      "first_delta_seconds": 3.361260175006464,
+      "output_tokens": 11,
+      "elapsed_seconds": 9.451545831048861,
+      "finish_reason": "eos"
+    },
+    {
+      "case": "memory",
+      "first_delta_seconds": 0.7546888610813767,
+      "output_tokens": 7,
+      "elapsed_seconds": 0.9977525309659541,
+      "finish_reason": "eos"
+    }
+  ],
+  "near_full_context_observation": {
+    "prompt_tokens": 1008,
+    "first_delta_seconds": 14.691606600000114,
+    "outcome": "stopped",
+    "note": "Cancelled request; not a steady-state decode benchmark"
+  },
+  "kv_main_arrays_bytes": {
+    "256": 22020096,
+    "512": 44040192,
+    "1024": 88080384
+  },
+  "new_public_startup_context_option": true,
+  "production_service_changed": false
+}

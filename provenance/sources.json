@@ -1,0 +1,45 @@
+{
+  "scope": "Training-source attribution; not a license grant for code or weights",
+  "sft": [
+    {
+      "repo_id": "HuggingFaceTB/smol-smoltalk",
+      "revision": "f73fe857d519ff6ac5af2ea67c4d3834da7b8bcc",
+      "upstream_card_license": "Apache-2.0",
+      "card_url": "https://huggingface.co/datasets/HuggingFaceTB/smol-smoltalk/blob/f73fe857d519ff6ac5af2ea67c4d3834da7b8bcc/README.md"
+    },
+    {
+      "repo_id": "HuggingFaceTB/everyday-conversations-llama3.1-2k",
+      "revision": "14f543216b9ba42b6b951dc5bd199460d193b162",
+      "upstream_card_license": "Apache-2.0",
+      "card_url": "https://huggingface.co/datasets/HuggingFaceTB/everyday-conversations-llama3.1-2k/blob/14f543216b9ba42b6b951dc5bd199460d193b162/README.md"
+    },
+    {
+      "repo_id": "OpenAssistant/oasst2",
+      "revision": "179dd21fc55192153d94adb0e0ce8f69e222bf75",
+      "upstream_card_license": "Apache-2.0",
+      "card_url": "https://huggingface.co/datasets/OpenAssistant/oasst2/blob/179dd21fc55192153d94adb0e0ce8f69e222bf75/README.md"
+    },
+    {
+      "repo_id": "HuggingFaceH4/ultrachat_200k",
+      "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+      "upstream_card_license": "MIT",
+      "card_url": "https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k/blob/8049631c405ae6576f93f445c6b8166f76f5505a/README.md"
+    },
+    {
+      "repo_id": "rajpurkar/squad_v2",
+      "revision": "3ffb306f725f7d2ce8394bc1873b24868140c412",
+      "upstream_card_license": "CC-BY-SA-4.0",
+      "card_url": "https://huggingface.co/datasets/rajpurkar/squad_v2/blob/3ffb306f725f7d2ce8394bc1873b24868140c412/README.md"
+    }
+  ],
+  "pretraining": [
+    "English Wikipedia",
+    "Project Gutenberg",
+    "web/C4 material",
+    "arXiv"
+  ],
+  "pretraining_rights": "Heterogeneous underlying rights; no blanket corpus license asserted",
+  "squad_attribution": "SQuAD 2.0: Rajpurkar et al.; selected and reformatted question/context/answer messages; source card CC-BY-SA-4.0",
+  "authored_material": "Project-authored identity/templates; not counted as newly collected human dialogue",
+  "raw_or_processed_examples_distributed": false
+}

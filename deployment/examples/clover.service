@@ -1,0 +1,27 @@
+[Unit]
+Description=Clover-125M demo
+After=network.target
+
+[Service]
+User=clover
+WorkingDirectory=/opt/clover/code
+ExecStart=/opt/clover/venv/bin/python -B -m deployment.serve_public --root /opt/clover/model --origin https://chat.example.org
+Environment=PYTHONUNBUFFERED=1
+Environment=OMP_NUM_THREADS=2
+Environment=OPENBLAS_NUM_THREADS=1
+Environment=TOKENIZERS_PARALLELISM=false
+MemoryAccounting=true
+MemoryHigh=700M
+MemoryMax=768M
+MemorySwapMax=256M
+TasksMax=48
+ProtectSystem=strict
+ProtectHome=read-only
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

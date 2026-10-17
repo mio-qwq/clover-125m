@@ -1,0 +1,174 @@
+{
+  "status": "passed",
+  "scope": "slim training/inference/web publication",
+  "public_python_source_allowlist": [
+    "deployment/export_f32.py",
+    "deployment/native_engine.py",
+    "deployment/serve_public.py",
+    "inference/generate.py",
+    "inference/generate_gguf.py",
+    "scripts/lm_common.py",
+    "scripts/lm_data.py",
+    "scripts/lm_progress.py",
+    "scripts/serve_sft_web.py",
+    "scripts/sft_common.py",
+    "scripts/sft_format.py",
+    "scripts/sft_round2_common.py",
+    "scripts/sft_round3_common.py",
+    "scripts/train_lm.py",
+    "scripts/train_sft.py",
+    "scripts/train_sft_round2.py",
+    "scripts/train_sft_round3.py"
+  ],
+  "historical_files_byte_identical": 19,
+  "web_functions_preserved_by_ast": [
+    "APIError",
+    "parameters",
+    "fit_history",
+    "Job",
+    "Controller",
+    "make_handler"
+  ],
+  "source_privacy": {
+    "raw_data_included": false,
+    "processed_data_included": false,
+    "collection_cleaning_preparation_source_included": false,
+    "tests_included": false,
+    "private_deployment_admin_tools_included": false
+  },
+  "training_config_only_checks": {
+    "status": "passed",
+    "cases": [
+      {
+        "entry": "scripts/train_lm.py",
+        "configuration_only": true,
+        "parameters": 124720896,
+        "optimizer_updates": 0
+      },
+      {
+        "entry": "scripts/train_sft.py",
+        "configuration_only": true,
+        "parameters": 124720896,
+        "optimizer_updates": 0
+      },
+      {
+        "entry": "scripts/train_sft_round2.py",
+        "configuration_only": true,
+        "parameters": 124720896,
+        "optimizer_updates": 0
+      },
+      {
+        "entry": "scripts/train_sft_round3.py",
+        "configuration_only": true,
+        "parameters": 124720896,
+        "optimizer_updates": 0
+      }
+    ],
+    "training_data_read": false,
+    "weights_loaded": false,
+    "optimizer_updates": 0,
+    "scope": "Configuration/import closure only; private training receipts/data are not distributed"
+  },
+  "native_checks": {
+    "status": "passed",
+    "runtime": "portable GGUF CPU FP32 weights / FP32 KV",
+    "cases": [
+      {
+        "id": 0,
+        "same_role_token_ids": true,
+        "same_argmax": true,
+        "max_absolute_error": 2.1189451217651367e-05
+      },
+      {
+        "id": 1,
+        "same_role_token_ids": true,
+        "same_argmax": true,
+        "max_absolute_error": 2.09808349609375e-05
+      },
+      {
+        "id": 2,
+        "same_role_token_ids": true,
+        "same_argmax": true,
+        "max_absolute_error": 1.33514404296875e-05
+      }
+    ],
+    "http_static_assets": 4,
+    "cross_origin_rejected": true,
+    "streaming_generation": {
+      "text": "I am Clover, an AI language model.",
+      "tokens": 11,
+      "finish_reason": "eos"
+    },
+    "versions": {
+      "llama_cpp": "0.3.36",
+      "numpy": "2.5.4",
+      "tokenizers": "0.23.3"
+    },
+    "torch_imported": false,
+    "elapsed_seconds": 0.5309999999999491,
+    "optimizer_updates": 0,
+    "production_server_contacted": false
+  },
+  "boundary_checks": {
+    "status": "passed",
+    "tests_run": 7,
+    "failures": 0,
+    "errors": 0,
+    "tests_distributed": false,
+    "startup_context_cli": {
+      "context_tokens": 512,
+      "threads": 2,
+      "state_http_status": 200,
+      "effective_ui_default": 512,
+      "ui_limits": [
+        256,
+        512
+      ]
+    },
+    "production_server_contacted": false,
+    "optimizer_updates": 0
+  },
+  "hf_torch_acceptance_reused": {
+    "reason": "All runtime input/source hashes identical",
+    "files_compared": [
+      "model.safetensors",
+      "config.json",
+      "generation_config.json",
+      "tokenizer.json",
+      "tokenizer_config.json",
+      "sft_template.json",
+      "assistant_profile.json",
+      "generate.py",
+      "sft_format.py",
+      "requirements-inference.txt"
+    ],
+    "previous_acceptance_status": "passed",
+    "previous_logit_max_error": 0.0
+  },
+  "python_syntax_files": 19,
+  "relative_doc_links": 16,
+  "content_checks": {
+    "secret_and_private_path_scan": "passed (bounded patterns + allowlist)",
+    "weight_scope": [
+      "gguf/Clover-125M-v0.1.0-F32.gguf",
+      "model.safetensors"
+    ],
+    "no_data_or_credentials_directories": true
+  },
+  "model_hashes_unchanged": {
+    "safetensors": "3fa7af023a29ac684c09f66dc40b80ad695681f43be6fa50759f79bed941c79c",
+    "gguf": "c8649696f1a89d73d59ae0ed7b9635ec7ce1b61db86ed5ddc9d3b64eb296da00"
+  },
+  "raw_files_metadata_unchanged": 4969,
+  "protected_weights_unchanged": 5,
+  "frozen_training_files_unchanged": 33,
+  "cpu_evidence": "Previous captures, anonymized; no new server probe",
+  "hf_link": "https://huggingface.co/YOUR_HF_USERNAME/Clover-125M",
+  "hf_link_is_placeholder": true,
+  "optimizer_updates": 0,
+  "test_evaluations_rerun": 0,
+  "uploads": 0,
+  "production_service_operations": 0,
+  "code_license": "pending",
+  "model_license": "pending"
+}

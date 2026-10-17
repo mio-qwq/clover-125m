@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "model_sha256": "3fa7af023a29ac684c09f66dc40b80ad695681f43be6fa50759f79bed941c79c",
+  "optimizer_updates": 0,
+  "candidate_fixed_before_test": true,
+  "metrics": {
+    "round3_reading_test": {
+      "conversations": 650,
+      "loss": 0.4398080707022833,
+      "perplexity": 1.5524092371019236,
+      "tokens": 8386,
+      "sources": {
+        "squad_answer": {
+          "loss": 0.4571292130286717,
+          "tokens": 7336
+        },
+        "squad_missing": {
+          "loss": 0.31879102298191614,
+          "tokens": 1050
+        }
+      }
+    },
+    "round2_dialogue_test": {
+      "conversations": 388,
+      "loss": 2.1524724243719966,
+      "perplexity": 8.606110071061696,
+      "tokens": 90855,
+      "sources": {
+        "ultrachat": {
+          "loss": 2.1648425034903878,
+          "tokens": 80665
+        },
+        "everyday": {
+          "loss": 2.0545497126855374,
+          "tokens": 10190
+        }
+      }
+    }
+  },
+  "round3_training_validation": {
+    "loss": 0.44322897550262036,
+    "perplexity": 1.5577289752842636,
+    "tokens": 8055,
+    "sources": {
+      "squad_missing": {
+        "loss": 0.3424483358292353,
+        "tokens": 1050
+      },
+      "squad_answer": {
+        "loss": 0.45833528123524764,
+        "tokens": 7005
+      }
+    }
+  },
+  "pretraining_validation_retention": {
+    "loss": 3.2829229876806494,
+    "perplexity": 26.653566996576266,
+    "tokens": 1048576,
+    "sources": {
+      "wikipedia": {
+        "loss": 3.0130124816554216,
+        "tokens": 410706
+      },
+      "gutenberg": {
+        "loss": 3.51290655578895,
+        "tokens": 147320
+      },
+      "web_articles": {
+        "loss": 3.4582553048037856,
+        "tokens": 449795
+      },
+      "arxiv": {
+        "loss": 3.2365258696210586,
+        "tokens": 40755
+      }
+    }
+  },
+  "note": "Previously recorded results; no Test rerun or Test-based selection during publication preparation"
+}

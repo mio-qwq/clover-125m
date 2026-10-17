@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "load_seconds": 0.1272835000000896,
+  "cases": [
+    {
+      "id": 0,
+      "same_argmax": true,
+      "max_absolute_error": 2.1189451217651367e-05,
+      "mean_absolute_error": 2.156372602257761e-06
+    },
+    {
+      "id": 1,
+      "same_argmax": true,
+      "max_absolute_error": 2.09808349609375e-05,
+      "mean_absolute_error": 6.85391751176212e-06
+    },
+    {
+      "id": 2,
+      "same_argmax": true,
+      "max_absolute_error": 1.33514404296875e-05,
+      "mean_absolute_error": 3.4589706956467126e-06
+    }
+  ],
+  "generation": {
+    "output_tokens": 11,
+    "finish_reason": "eos",
+    "seconds": 0.28517069999998057,
+    "text": "I am Clover, an AI language model."
+  },
+  "precision": "FP32 weights and FP32 KV",
+  "optimizer_updates": 0,
+  "note": "Different CPU kernels and NumPy RNG may change sampled outputs; original tokenizer and role token IDs are retained."
+}
