@@ -2,7 +2,10 @@
 
 **一个从零开始训练的 1.25 亿参数英文语言模型。**
 
-**[在线体验 Clover →](https://ai.mio.blue/)** · [English](README.md) · [训练记录](docs/TRAINING.md) · [推理指南](docs/INFERENCE.md) · [服务器部署](docs/CPU_2C1G.md)
+> **在线体验自 2026 年 10 月 29 日起关闭。** 网站现仅保留项目介绍。
+> 如需体验，请前往 [Hugging Face 下载模型](https://huggingface.co/mioqwq/Clover-125M)，并在本地运行。
+
+**[Clover 项目介绍 →](https://ai.mio.blue/)** · [English](README.md) · [训练记录](docs/TRAINING.md) · [推理指南](docs/INFERENCE.md) · [服务器部署](docs/CPU_2C1G.md)
 
 Clover-125M 是一个从零开始预训练的小型语言模型。它先通过预训练的英文语料学习预测下一个 token，再依次进行了三轮全参数监督微调（SFT）。最终模型有 **124,720,896 个参数**。
 
@@ -10,7 +13,7 @@ Clover-125M 是一个从零开始预训练的小型语言模型。它先通过�
 
 **项目地址**
 
-- **在线体验：**[ai.mio.blue](https://ai.mio.blue/)
+- **项目主页：**[ai.mio.blue](https://ai.mio.blue/)
 - **模型权重：**[Hugging Face · Clover-125M](https://huggingface.co/mioqwq/Clover-125M)
 - **源码仓库：**[mio-qwq/clover-125m](https://github.com/mio-qwq/clover-125m)
 - **博客文章：**[mio.blue/Clover-125M](https://mio.blue/Clover-125M/)
@@ -47,7 +50,7 @@ Clover-125M 是一个从零开始预训练的小型语言模型。它先通过�
 
 ## 快速开始
 
-想直接体验 Clover，可以打开 **[在线聊天页面](https://ai.mio.blue/)**，不需要下载模型或安装环境。Clover 主要使用英文数据训练，建议先用英文和它聊天。
+在线体验已于 2026 年 10 月 29 日关闭。想体验 Clover，请前往 **[Hugging Face 下载模型](https://huggingface.co/mioqwq/Clover-125M)**，并按照下方“本地运行”说明配置。Clover 主要使用英文数据训练，建议先用英文和它聊天。
 
 ## 本地运行
 

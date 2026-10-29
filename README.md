@@ -2,7 +2,10 @@
 
 **A 125-million-parameter English language model trained from scratch.**
 
-**[Try Clover online →](https://ai.mio.blue/)** · [简体中文](README.zh-CN.md) · [Training notes](docs/TRAINING.md) · [Inference guide](docs/INFERENCE.md) · [Server deployment](docs/CPU_2C1G.md)
+> **Online demo closed as of October 29, 2026.** The website now serves as a project information page.
+> To try Clover, [download the model from Hugging Face](https://huggingface.co/mioqwq/Clover-125M) and run it locally.
+
+**[Clover project page →](https://ai.mio.blue/)** · [简体中文](README.zh-CN.md) · [Training notes](docs/TRAINING.md) · [Inference guide](docs/INFERENCE.md) · [Server deployment](docs/CPU_2C1G.md)
 
 Clover-125M is a small language model trained from scratch. It first learned to predict the next token from English pretraining data, then went through three rounds of full-parameter supervised fine-tuning (SFT). The finished model has **124,720,896 parameters**.
 
@@ -10,7 +13,7 @@ This repository contains the training code, inference tools, and the source for 
 
 **Project links**
 
-- **Try Clover online:** [ai.mio.blue](https://ai.mio.blue/)
+- **Project page:** [ai.mio.blue](https://ai.mio.blue/)
 - **Model weights:** [Hugging Face · Clover-125M](https://huggingface.co/mioqwq/Clover-125M)
 - **Source code:** [mio-qwq/clover-125m](https://github.com/mio-qwq/clover-125m)
 - **Blog post:** [mio.blue/Clover-125M](https://mio.blue/Clover-125M/)
@@ -47,9 +50,9 @@ For the data sources and evaluation details, see the [training notes](docs/TRAIN
 
 ## Quick start
 
-**[Chat with Clover online →](https://ai.mio.blue/)**
+**[Download Clover from Hugging Face →](https://huggingface.co/mioqwq/Clover-125M)**
 
-You can try the deployed web version directly, without downloading the model or setting up Python. Clover was trained primarily on English, so English prompts are recommended.
+The online demo closed on October 29, 2026. Download the model from Hugging Face and follow the local setup below. Clover was trained primarily on English, so English prompts are recommended.
 
 ## Run locally
 
